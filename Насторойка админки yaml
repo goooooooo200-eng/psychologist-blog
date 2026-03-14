@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main # или master, если ваш репозиторий использует master
+
+media_folder: "images/uploads" # папка для загружаемых картинок
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts" # имя коллекции
+    label: "Посты" # отображаемое название
+    folder: "posts" # папка для markdown-файлов
+    create: true # разрешить создание новых файлов
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # формат имени файла
+    fields: # поля формы
+      - {label: "Заголовок", name: "title", widget: "string"}
+      - {label: "Дата публикации", name: "date", widget: "datetime"}
+      - {label: "Текст поста", name: "body", widget: "markdown"}
+      - {label: "Изображение (необязательно)", name: "image", widget: "image", required: false}
